@@ -35,19 +35,30 @@ function ContactForm() {
 
     try {
       setIsLoading(true);
-      const res = await axios.post(
-        `${process.env.NEXT_PUBLIC_APP_URL}/api/contact`,
-        userInput
-      );
+      
+      // Using FormSubmit.co for simple email forwarding
+      const formData = new FormData();
+      formData.append('name', userInput.name);
+      formData.append('email', userInput.email);
+      formData.append('message', userInput.message);
 
-      toast.success("Message sent successfully!");
-      setUserInput({
-        name: "",
-        email: "",
-        message: "",
+      const res = await fetch('https://formsubmit.co/aniketmhalungekar0703@gmail.com', {
+        method: 'POST',
+        body: formData
       });
+
+      if (res.ok) {
+        toast.success("Message sent successfully!");
+        setUserInput({
+          name: "",
+          email: "",
+          message: "",
+        });
+      } else {
+        throw new Error('Failed to send message');
+      }
     } catch (error) {
-      toast.error(error?.response?.data?.message);
+      toast.error("Failed to send message. Please try again.");
     } finally {
       setIsLoading(false);
     };
