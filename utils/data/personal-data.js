@@ -6,12 +6,12 @@ export const personalData = {
   email: 'aniketmhalungekar0703@gmail.com',
   phone: '+919370050574',
   address: 'Kolhapur Maharashtra 416205',
-  github: 'https://github.com/said7388',
-  facebook: 'https://www.facebook.com/abusaid.riyaz/',
-  linkedIn: 'https://www.linkedin.com/in/abu-said-bd/',
-  twitter: 'https://twitter.com/said7388',
-  stackOverflow: 'https://stackoverflow.com/users/16840768/abu-said',
-  leetcode: "https://leetcode.com/said3812/",
+  github: 'https://github.com/Aniket-07-03',
+  facebook: 'https://www.facebook.com/',
+  linkedIn: 'https://www.linkedin.com/in/aniket-mhalungekar-b91bbb231/',
+  twitter: 'https://twitter.com/',
+  stackOverflow: 'https://stackoverflow.com/',
+  leetcode: "https://leetcode.com/",
   devUsername: "",
-  resume: "https://drive.google.com/file/d/1eyutpKFFhJ9X-qpQGKhUNnVRkB5Wer00/view?usp=sharing"
+  resume: ""
 }
