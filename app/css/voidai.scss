@@ -1,0 +1,357 @@
+/* VoidAI Design System */
+
+/* ===== CSS Custom Properties ===== */
+:root {
+  /* Colors */
+  --void-black: #000000;
+  --void-dark: #0a0a0a;
+  --void-gray-900: #111111;
+  --void-gray-800: #1a1a1a;
+  --void-gray-700: #2a2a2a;
+  --void-gray-600: #3a3a3a;
+  --void-gray-500: #6b7280;
+  --void-gray-400: #9ca3af;
+  --void-gray-300: #d1d5db;
+  
+  /* Accent Colors */
+  --void-blue: #3b82f6;
+  --void-purple: #8b5cf6;
+  --void-cyan: #06b6d4;
+  --void-pink: #ec4899;
+  
+  /* Glow Colors */
+  --glow-blue: rgba(59, 130, 246, 0.5);
+  --glow-purple: rgba(139, 92, 246, 0.5);
+  --glow-cyan: rgba(6, 182, 212, 0.3);
+  
+  /* Border */
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --border-glow: rgba(59, 130, 246, 0.3);
+}
+
+/* ===== L-Bracket Corners ===== */
+.l-bracket {
+  position: relative;
+}
+
+.l-bracket::before,
+.l-bracket::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: var(--void-gray-600);
+  border-style: solid;
+  border-width: 0;
+  transition: border-color 0.3s ease;
+}
+
+.l-bracket::before {
+  top: 0;
+  left: 0;
+  border-top-width: 1px;
+  border-left-width: 1px;
+}
+
+.l-bracket::after {
+  bottom: 0;
+  right: 0;
+  border-bottom-width: 1px;
+  border-right-width: 1px;
+}
+
+.l-bracket:hover::before,
+.l-bracket:hover::after {
+  border-color: var(--void-blue);
+}
+
+/* Full L-Bracket (all 4 corners) */
+.l-bracket-full {
+  position: relative;
+}
+
+.l-bracket-full::before,
+.l-bracket-full::after,
+.l-bracket-full > .l-corner-bl,
+.l-bracket-full > .l-corner-tr {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-color: var(--void-gray-600);
+  border-style: solid;
+  border-width: 0;
+  transition: border-color 0.3s ease;
+  pointer-events: none;
+}
+
+.l-corner {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-color: var(--void-gray-600);
+  border-style: solid;
+  border-width: 0;
+  transition: border-color 0.3s ease;
+  pointer-events: none;
+}
+
+.l-corner-tl {
+  top: 0;
+  left: 0;
+  border-top-width: 1px;
+  border-left-width: 1px;
+}
+
+.l-corner-tr {
+  top: 0;
+  right: 0;
+  border-top-width: 1px;
+  border-right-width: 1px;
+}
+
+.l-corner-bl {
+  bottom: 0;
+  left: 0;
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+}
+
+.l-corner-br {
+  bottom: 0;
+  right: 0;
+  border-bottom-width: 1px;
+  border-right-width: 1px;
+}
+
+/* ===== Glow Effects ===== */
+.glow-blue {
+  box-shadow: 0 0 30px var(--glow-blue), 0 0 60px var(--glow-blue);
+}
+
+.glow-purple {
+  box-shadow: 0 0 30px var(--glow-purple), 0 0 60px var(--glow-purple);
+}
+
+.glow-border {
+  box-shadow: 0 0 0 1px var(--border-glow), 0 0 20px var(--glow-blue);
+}
+
+.glow-text-blue {
+  text-shadow: 0 0 20px var(--glow-blue), 0 0 40px var(--glow-blue);
+}
+
+.glow-text-purple {
+  text-shadow: 0 0 20px var(--glow-purple), 0 0 40px var(--glow-purple);
+}
+
+/* ===== Card Styles ===== */
+.void-card {
+  background: var(--void-gray-900);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.void-card:hover {
+  border-color: var(--void-blue);
+  box-shadow: 0 0 20px var(--glow-blue);
+}
+
+/* ===== Button Styles ===== */
+.void-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: var(--void-gray-900);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.void-btn:hover {
+  border-color: var(--void-blue);
+  box-shadow: 0 0 20px var(--glow-blue);
+  transform: translateY(-2px);
+}
+
+.void-btn-primary {
+  background: linear-gradient(135deg, var(--void-blue), var(--void-purple));
+  border: none;
+}
+
+.void-btn-primary:hover {
+  box-shadow: 0 0 30px var(--glow-blue), 0 0 60px var(--glow-purple);
+}
+
+/* ===== Grid/Dot Pattern Background ===== */
+.dot-pattern {
+  background-image: radial-gradient(circle, var(--void-gray-700) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.grid-pattern {
+  background-image: 
+    linear-gradient(var(--border-subtle) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* ===== Section Styling ===== */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.section-header::before,
+.section-header::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--void-gray-600), transparent);
+}
+
+.section-title {
+  font-family: 'Roboto Mono', 'SF Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--void-gray-400);
+  padding: 8px 16px;
+  border: 1px solid var(--void-gray-700);
+  border-radius: 4px;
+}
+
+/* ===== Animations ===== */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* ===== Monospace Text ===== */
+.mono {
+  font-family: 'Roboto Mono', 'SF Mono', 'Monaco', monospace;
+}
+
+/* ===== Gradient Text ===== */
+.gradient-text {
+  background: linear-gradient(135deg, var(--void-blue), var(--void-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== Metallic Text Effect ===== */
+.metallic-text {
+  background: linear-gradient(180deg, 
+    #ffffff 0%, 
+    #d4d4d4 25%, 
+    #a3a3a3 50%, 
+    #d4d4d4 75%, 
+    #ffffff 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+}
+
+/* ===== Floating Labels ===== */
+.floating-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid var(--void-gray-700);
+  border-radius: 6px;
+  font-size: 12px;
+  color: var(--void-gray-300);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.floating-label:hover {
+  border-color: var(--void-blue);
+  transform: translateY(-2px);
+}
+
+/* ===== Center Glow Effect ===== */
+.center-glow {
+  position: relative;
+}
+
+.center-glow::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--glow-blue) 0%, transparent 70%);
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* ===== Divider ===== */
+.void-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--void-gray-600), transparent);
+  margin: 48px 0;
+}
+
+/* ===== Nav Dot Separator ===== */
+.nav-dot {
+  width: 4px;
+  height: 4px;
+  background: var(--void-gray-600);
+  border-radius: 50%;
+}
