@@ -41,6 +41,8 @@ function ContactForm() {
       formData.append('name', userInput.name);
       formData.append('email', userInput.email);
       formData.append('message', userInput.message);
+      formData.append('_subject', 'New portfolio contact');
+      formData.append('_captcha', 'false');
 
       const res = await fetch('https://formsubmit.co/aniketmhalungekar0703@gmail.com', {
         method: 'POST',
