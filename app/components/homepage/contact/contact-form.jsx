@@ -1,10 +1,10 @@
 "use client";
 // @flow strict
 import { isValidEmail } from "@/utils/check-email";
-import axios from "axios";
 import { useState } from "react";
 import { TbMailForward } from "react-icons/tb";
 import { toast } from "react-toastify";
+import { SpotlightCard } from "@/app/components/ui/spotlight";
 
 function ContactForm() {
   const [error, setError] = useState({ email: false, required: false });
@@ -17,7 +17,7 @@ function ContactForm() {
 
   const checkRequired = () => {
     if (userInput.email && userInput.message && userInput.name) {
-      setError({ ...error, required: false });
+      setError((prev) => ({ ...prev, required: false }));
     }
   };
 
@@ -25,18 +25,17 @@ function ContactForm() {
     e.preventDefault();
 
     if (!userInput.email || !userInput.message || !userInput.name) {
-      setError({ ...error, required: true });
+      setError((prev) => ({ ...prev, required: true }));
       return;
     } else if (error.email) {
       return;
     } else {
-      setError({ ...error, required: false });
-    };
+      setError((prev) => ({ ...prev, required: false }));
+    }
 
     try {
       setIsLoading(true);
       
-      // Using FormSubmit.co for simple email forwarding
       const formData = new FormData();
       formData.append('name', userInput.name);
       formData.append('email', userInput.email);
@@ -59,85 +58,89 @@ function ContactForm() {
       } else {
         throw new Error('Failed to send message');
       }
-    } catch (error) {
+    } catch {
       toast.error("Failed to send message. Please try again.");
     } finally {
       setIsLoading(false);
-    };
+    }
   };
 
   return (
-    <div>
-      <p className="font-medium mb-5 text-[#16f2b3] text-xl uppercase">Contact with me</p>
-      <div className="max-w-3xl text-white rounded-lg border border-[#464c6a] p-3 lg:p-5">
-        <p className="text-sm text-[#d3d8e8]">{"If you have any questions or concerns, please don't hesitate to contact me. I am open to any work opportunities that align with my skills and interests."}</p>
-        <div className="mt-6 flex flex-col gap-4">
-          <div className="flex flex-col gap-2">
-            <label className="text-base">Your Name: </label>
-            <input
-              className="bg-[#10172d] w-full border rounded-md border-[#353a52] focus:border-[#16f2b3] ring-0 outline-0 transition-all duration-300 px-3 py-2"
-              type="text"
-              maxLength="100"
-              required={true}
-              onChange={(e) => setUserInput({ ...userInput, name: e.target.value })}
-              onBlur={checkRequired}
-              value={userInput.name}
-            />
-          </div>
+    <SpotlightCard className="p-6 sm:p-8 border-white/10">
+      <h3 className="text-xl font-bold text-white mb-2">Send a Message</h3>
+      <p className="text-sm text-neutral-400 mb-6">
+        Fill out the form below and I&apos;ll get back to you as soon as possible.
+      </p>
 
-          <div className="flex flex-col gap-2">
-            <label className="text-base">Your Email: </label>
-            <input
-              className="bg-[#10172d] w-full border rounded-md border-[#353a52] focus:border-[#16f2b3] ring-0 outline-0 transition-all duration-300 px-3 py-2"
-              type="email"
-              maxLength="100"
-              required={true}
-              value={userInput.email}
-              onChange={(e) => setUserInput({ ...userInput, email: e.target.value })}
-              onBlur={() => {
-                checkRequired();
-                setError({ ...error, email: !isValidEmail(userInput.email) });
-              }}
-            />
-            {error.email && <p className="text-sm text-red-400">Please provide a valid email!</p>}
-          </div>
-
-          <div className="flex flex-col gap-2">
-            <label className="text-base">Your Message: </label>
-            <textarea
-              className="bg-[#10172d] w-full border rounded-md border-[#353a52] focus:border-[#16f2b3] ring-0 outline-0 transition-all duration-300 px-3 py-2"
-              maxLength="500"
-              name="message"
-              required={true}
-              onChange={(e) => setUserInput({ ...userInput, message: e.target.value })}
-              onBlur={checkRequired}
-              rows="4"
-              value={userInput.message}
-            />
-          </div>
-          <div className="flex flex-col items-center gap-3">
-            {error.required && <p className="text-sm text-red-400">
-              All fiels are required!
-            </p>}
-            <button
-              className="flex items-center gap-1 hover:gap-3 rounded-full bg-gradient-to-r from-pink-500 to-violet-600 px-5 md:px-12 py-2.5 md:py-3 text-center text-xs md:text-sm font-medium uppercase tracking-wider text-white no-underline transition-all duration-200 ease-out hover:text-white hover:no-underline md:font-semibold"
-              role="button"
-              onClick={handleSendMail}
-              disabled={isLoading}
-            >
-              {
-                isLoading ?
-                <span>Sending Message...</span>:
-                <span className="flex items-center gap-1">
-                  Send Message
-                  <TbMailForward size={20} />
-                </span>
-              }
-            </button>
-          </div>
+      <form onSubmit={handleSendMail} className="flex flex-col gap-4">
+        <div className="flex flex-col gap-2">
+          <label className="text-xs font-semibold text-neutral-300 uppercase tracking-wider">Your Name</label>
+          <input
+            className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-sm text-white placeholder-neutral-500 focus:border-violet-500/80 focus:bg-white/10 focus:outline-none transition-all duration-300"
+            type="text"
+            placeholder="John Doe"
+            maxLength="100"
+            required
+            onChange={(e) => setUserInput({ ...userInput, name: e.target.value })}
+            onBlur={checkRequired}
+            value={userInput.name}
+          />
         </div>
-      </div>
-    </div>
+
+        <div className="flex flex-col gap-2">
+          <label className="text-xs font-semibold text-neutral-300 uppercase tracking-wider">Your Email</label>
+          <input
+            className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-sm text-white placeholder-neutral-500 focus:border-violet-500/80 focus:bg-white/10 focus:outline-none transition-all duration-300"
+            type="email"
+            placeholder="john@example.com"
+            maxLength="100"
+            required
+            value={userInput.email}
+            onChange={(e) => setUserInput({ ...userInput, email: e.target.value })}
+            onBlur={() => {
+              checkRequired();
+              setError((prev) => ({ ...prev, email: !isValidEmail(userInput.email) }));
+            }}
+          />
+          {error.email && <p className="text-xs text-red-400">Please enter a valid email address.</p>}
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <label className="text-xs font-semibold text-neutral-300 uppercase tracking-wider">Your Message</label>
+          <textarea
+            className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-sm text-white placeholder-neutral-500 focus:border-violet-500/80 focus:bg-white/10 focus:outline-none transition-all duration-300"
+            placeholder="Hello, I'd like to talk about..."
+            maxLength="500"
+            name="message"
+            required
+            onChange={(e) => setUserInput({ ...userInput, message: e.target.value })}
+            onBlur={checkRequired}
+            rows="4"
+            value={userInput.message}
+          />
+        </div>
+
+        {error.required && <p className="text-xs text-red-400">All fields are required!</p>}
+
+        <button
+          type="submit"
+          disabled={isLoading}
+          className="mt-2 group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-xl p-[1px] font-semibold text-sm focus:outline-none"
+        >
+          <span className="absolute inset-0 bg-gradient-to-r from-violet-600 to-pink-500 transition-all duration-300 group-hover:opacity-100" />
+          <span className="relative flex items-center justify-center gap-2 w-full rounded-xl bg-black/90 px-6 py-3.5 text-white transition-all duration-300 group-hover:bg-black/60">
+            {isLoading ? (
+              <span>Sending Message...</span>
+            ) : (
+              <>
+                <span>Send Message</span>
+                <TbMailForward size={18} className="text-pink-400 group-hover:translate-x-1 transition-transform" />
+              </>
+            )}
+          </span>
+        </button>
+      </form>
+    </SpotlightCard>
   );
 };
 

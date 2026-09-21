@@ -1,79 +1,53 @@
 // @flow strict
 import { educations } from "@/utils/data/educations";
-import Image from "next/image";
-import { BsPersonWorkspace } from "react-icons/bs";
-import lottieFile from '../../../assets/lottie/study.json';
+import studyLottie from '../../../assets/lottie/study.json';
 import AnimationLottie from "../../helper/animation-lottie";
-import GlowCard from "../../helper/glow-card";
+import { SpotlightCard } from "@/app/components/ui/spotlight";
+import { HiAcademicCap } from "react-icons/hi2";
 
 function Education() {
   return (
-    <div id="education" className="relative z-50 border-t my-12 lg:my-24 border-[#25213b]">
-      <Image
-        src="/section.svg"
-        alt="Hero"
-        width={1572}
-        height={795}
-        className="absolute top-0 -z-10"
-      />
-      <div className="flex justify-center -translate-y-[1px]">
-        <div className="w-3/4">
-          <div className="h-[1px] bg-gradient-to-r from-transparent via-violet-500 to-transparent  w-full" />
+    <div id="education" className="my-16 lg:my-28 relative">
+      <div className="flex items-center gap-3 mb-8">
+        <div className="p-2 rounded-xl bg-violet-500/10 border border-violet-500/20 text-violet-400">
+          <HiAcademicCap size={22} />
         </div>
+        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
+          Academic <span className="bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent">Education</span>
+        </h2>
+        <div className="h-[1px] flex-1 bg-gradient-to-r from-violet-500/30 to-transparent ml-4" />
       </div>
 
-      <div className="flex justify-center my-5 lg:py-8">
-        <div className="flex  items-center">
-          <span className="w-24 h-[2px] bg-[#1a1443]"></span>
-          <span className="bg-[#1a1443] w-fit text-white p-2 px-5 text-xl rounded-md">
-            Educations
-          </span>
-          <span className="w-24 h-[2px] bg-[#1a1443]"></span>
-        </div>
-      </div>
-
-      <div className="py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
-          <div className="flex justify-center items-start">
-            <div className="w-3/4 h-3/4">
-              <AnimationLottie animationPath={lottieFile} />
-            </div>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="lg:col-span-5 flex justify-center items-center">
+          <div className="w-full max-w-sm p-4">
+            <AnimationLottie animationPath={studyLottie} />
           </div>
+        </div>
 
-          <div>
-            <div className="flex flex-col gap-6">
-              {
-                educations.map(education => (
-                  <GlowCard key={education.id} identifier={`education-${education.id}`}>
-                    <div className="p-3 relative text-white">
-                      <Image
-                        src="/blur-23.svg"
-                        alt="Hero"
-                        width={1080}
-                        height={200}
-                        className="absolute bottom-0 opacity-80"
-                      />
-                      <div className="flex justify-center">
-                        <p className="text-xs sm:text-sm text-[#16f2b3]">
-                          {education.duration}
-                        </p>
-                      </div>
-                      <div className="flex items-center gap-x-8 px-3 py-5">
-                        <div className="text-violet-500  transition-all duration-300 hover:scale-125">
-                          <BsPersonWorkspace size={36} />
-                        </div>
-                        <div>
-                          <p className="text-base sm:text-xl mb-2 font-medium uppercase">
-                            {education.title}
-                          </p>
-                          <p className="text-sm sm:text-base">{education.institution}</p>
-                        </div>
-                      </div>
-                    </div>
-                  </GlowCard>
-                ))
-              }
-            </div>
+        <div className="lg:col-span-7">
+          <div className="flex flex-col gap-4">
+            {educations.map((education) => (
+              <SpotlightCard key={education.id} className="p-6">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-xs font-semibold text-violet-300 w-fit mb-3">
+                  <span>{education.duration}</span>
+                </div>
+
+                <div className="flex items-start gap-4 mt-1">
+                  <div className="p-3 rounded-xl bg-gradient-to-br from-violet-600/20 to-pink-600/20 border border-violet-500/30 text-violet-400 shrink-0">
+                    <HiAcademicCap size={22} />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-white tracking-wide">
+                      {education.title}
+                    </h3>
+                    <p className="text-sm text-neutral-300 mt-1">
+                      {education.institution}
+                    </p>
+                  </div>
+                </div>
+              </SpotlightCard>
+            ))}
           </div>
         </div>
       </div>
