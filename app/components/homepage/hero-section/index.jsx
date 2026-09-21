@@ -10,15 +10,21 @@ import { MdDownload } from "react-icons/md";
 import { RiContactsFill } from "react-icons/ri";
 import { SiLeetcode } from "react-icons/si";
 import { HiSparkles } from "react-icons/hi2";
-import { SpotlightCard, GlowingBadge } from "@/app/components/ui/spotlight";
+import { SpotlightCard, GlowingBadge, AnimatedText } from "@/app/components/ui/spotlight";
+import { motion } from "framer-motion";
 
 function HeroSection() {
   return (
-    <section className="relative flex flex-col items-center justify-between py-8 lg:py-16">
+    <section className="relative flex flex-col items-center justify-between py-10 lg:py-20">
       <div className="grid grid-cols-1 items-center lg:grid-cols-2 lg:gap-12 gap-y-12 w-full">
-        <div className="order-2 lg:order-1 flex flex-col items-start justify-center">
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="order-2 lg:order-1 flex flex-col items-start justify-center"
+        >
           <GlowingBadge icon={HiSparkles} className="mb-6">
-            Available for New Projects & Roles
+            Available for New Opportunities
           </GlowingBadge>
 
           <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl lg:leading-[1.15]">
@@ -28,13 +34,11 @@ function HeroSection() {
             </span>
           </h1>
 
-          <p className="mt-4 text-xl font-medium text-neutral-300">
-            A passionate{" "}
-            <span className="text-cyan-400 underline decoration-cyan-500/30 underline-offset-4">
-              {personalData.designation}
-            </span>{" "}
-            building high-performance web applications and sleek digital experiences.
-          </p>
+          <div className="mt-4 text-xl font-medium text-neutral-300">
+            <AnimatedText
+              text={`A passionate ${personalData.designation} building high-performance web applications and sleek digital experiences.`}
+            />
+          </div>
 
           {/* Social Links */}
           <div className="my-8 flex items-center gap-3">
@@ -47,46 +51,60 @@ function HeroSection() {
             ].map((social, idx) => {
               const Icon = social.icon;
               return (
-                <Link
+                <motion.div
                   key={idx}
-                  href={social.href}
-                  target="_blank"
-                  aria-label={social.label}
-                  className="p-3 rounded-xl border border-white/10 bg-white/5 text-neutral-300 hover:text-white hover:border-violet-500/50 hover:bg-violet-500/10 hover:shadow-[0_0_20px_rgba(139,92,246,0.3)] transition-all duration-300 transform hover:-translate-y-1"
+                  whileHover={{ y: -5, scale: 1.1 }}
+                  transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <Icon size={20} />
-                </Link>
+                  <Link
+                    href={social.href}
+                    target="_blank"
+                    aria-label={social.label}
+                    className="p-3.5 block rounded-2xl border border-white/10 bg-white/5 text-neutral-300 hover:text-white hover:border-violet-500/50 hover:bg-violet-500/10 hover:shadow-[0_0_20px_rgba(139,92,246,0.3)] transition-all duration-300"
+                  >
+                    <Icon size={20} />
+                  </Link>
+                </motion.div>
               );
             })}
           </div>
 
           {/* Call to Actions */}
           <div className="flex flex-wrap items-center gap-4">
-            <Link
-              href="#contact"
-              className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full p-[1px] font-medium text-sm"
-            >
-              <span className="absolute inset-0 bg-gradient-to-r from-violet-600 to-pink-500 transition-all duration-300 group-hover:opacity-100" />
-              <span className="relative flex items-center gap-2 rounded-full bg-black/90 px-6 py-3.5 text-white transition-all duration-300 group-hover:bg-black/60">
-                <span>Contact Me</span>
-                <RiContactsFill size={16} className="text-pink-400 group-hover:translate-x-0.5 transition-transform" />
-              </span>
-            </Link>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
+              <Link
+                href="#contact"
+                className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full p-[1px] font-medium text-sm"
+              >
+                <span className="absolute inset-0 bg-gradient-to-r from-violet-600 to-pink-500 transition-all duration-300 group-hover:opacity-100" />
+                <span className="relative flex items-center gap-2 rounded-full bg-black/90 px-6 py-3.5 text-white transition-all duration-300 group-hover:bg-black/60">
+                  <span>Contact Me</span>
+                  <RiContactsFill size={16} className="text-pink-400 group-hover:translate-x-0.5 transition-transform" />
+                </span>
+              </Link>
+            </motion.div>
 
-            <Link
-              href={personalData.resume}
-              target="_blank"
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-medium text-white backdrop-blur-md transition-all duration-300 hover:border-violet-500/50 hover:bg-white/10 hover:shadow-[0_0_20px_rgba(139,92,246,0.2)]"
-            >
-              <span>Get Resume</span>
-              <MdDownload size={18} className="text-violet-400" />
-            </Link>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
+              <Link
+                href={personalData.resume}
+                target="_blank"
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-medium text-white backdrop-blur-md transition-all duration-300 hover:border-violet-500/50 hover:bg-white/10 hover:shadow-[0_0_20px_rgba(139,92,246,0.2)]"
+              >
+                <span>Get Resume</span>
+                <MdDownload size={18} className="text-violet-400" />
+              </Link>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
 
         {/* Dynamic Code Showcase Terminal */}
-        <div className="order-1 lg:order-2">
-          <SpotlightCard className="p-1 sm:p-2 border-violet-500/20 shadow-[0_0_50px_rgba(139,92,246,0.15)]">
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="order-1 lg:order-2"
+        >
+          <SpotlightCard className="p-1 sm:p-2 border-violet-500/30 shadow-[0_0_50px_rgba(139,92,246,0.15)]">
             <div className="flex items-center justify-between border-b border-white/10 px-4 py-3 bg-white/5">
               <div className="flex items-center space-x-2">
                 <div className="h-3 w-3 rounded-full bg-red-500/80"></div>
@@ -140,7 +158,7 @@ function HeroSection() {
               <div>{"};"}</div>
             </div>
           </SpotlightCard>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
