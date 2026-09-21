@@ -1,40 +1,67 @@
 // @flow strict
 import Link from 'next/link';
-import { CgGitFork } from "react-icons/cg";
-import { IoStar } from "react-icons/io5";
+import { personalData } from "@/utils/data/personal-data";
+import { BsGithub, BsLinkedin } from "react-icons/bs";
+import { FaFacebook, FaTwitterSquare } from "react-icons/fa";
+import { SiLeetcode } from "react-icons/si";
+import { HiHeart } from "react-icons/hi2";
 
 function Footer() {
   return (
-    <div className="relative border-t bg-[#0d1224] border-[#353951] text-white">
-      <div className="mx-auto px-6 sm:px-12 lg:max-w-[70rem] xl:max-w-[76rem] 2xl:max-w-[92rem] py-6 lg:py-10">
-        <div className="flex justify-center -z-40">
-          <div className="absolute top-0 h-[1px] w-1/2  bg-gradient-to-r from-transparent via-violet-500 to-transparent"></div>
-        </div>
-        <div className="flex flex-col md:flex-row items-center justify-between">
-          <p className="text-sm">
-            © Developer Portfolio by <Link target="_blank" href="https://www.linkedin.com/in/aniket-mhalungekar-b91bbb231/" className="text-[#16f2b3]">ANIKET MHALUNGEKAR</Link>
+    <footer className="relative border-t border-white/10 bg-black/60 backdrop-blur-2xl text-neutral-400 mt-20">
+      <div className="mx-auto max-w-7xl px-6 py-10 lg:px-8">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex flex-col items-center md:items-start gap-2">
+            <Link href="/" className="text-lg font-bold text-white tracking-tight">
+              <span className="bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent">
+                {personalData.name}
+              </span>
+            </Link>
+            <p className="text-xs text-neutral-400 flex items-center gap-1.5">
+              <span>Crafted with</span>
+              <HiHeart className="text-pink-500 animate-pulse" />
+              <span>using Next.js & Tailwind CSS</span>
+            </p>
+          </div>
+
+          {/* Social Links */}
+          <div className="flex items-center gap-4 text-neutral-400">
+            <Link
+              href={personalData.github}
+              target="_blank"
+              className="p-2 rounded-full border border-white/5 bg-white/5 hover:bg-violet-500/20 hover:text-violet-300 hover:border-violet-500/30 transition-all duration-300"
+            >
+              <BsGithub size={18} />
+            </Link>
+            <Link
+              href={personalData.linkedIn}
+              target="_blank"
+              className="p-2 rounded-full border border-white/5 bg-white/5 hover:bg-violet-500/20 hover:text-violet-300 hover:border-violet-500/30 transition-all duration-300"
+            >
+              <BsLinkedin size={18} />
+            </Link>
+            <Link
+              href={personalData.leetcode}
+              target="_blank"
+              className="p-2 rounded-full border border-white/5 bg-white/5 hover:bg-violet-500/20 hover:text-violet-300 hover:border-violet-500/30 transition-all duration-300"
+            >
+              <SiLeetcode size={18} />
+            </Link>
+            <Link
+              href={personalData.twitter}
+              target="_blank"
+              className="p-2 rounded-full border border-white/5 bg-white/5 hover:bg-violet-500/20 hover:text-violet-300 hover:border-violet-500/30 transition-all duration-300"
+            >
+              <FaTwitterSquare size={18} />
+            </Link>
+          </div>
+
+          <p className="text-xs text-neutral-500">
+            © {new Date().getFullYear()} All rights reserved.
           </p>
-          {/* <div className="flex items-center gap-5">
-            <Link
-              target="_blank"
-              href="https://github.com/said7388/developer-portfolio"
-              className="flex items-center gap-2 uppercase hover:text-[#16f2b3]"
-            >
-              <IoStar />
-              <span>Star</span>
-            </Link>
-            <Link
-              target="_blank"
-              href="https://github.com/said7388/developer-portfolio/fork"
-              className="flex items-center gap-2 uppercase hover:text-[#16f2b3]"
-            >
-              <CgGitFork />
-              <span>Fork</span>
-            </Link>
-          </div> */}
         </div>
       </div>
-    </div >
+    </footer>
   );
 };
 
