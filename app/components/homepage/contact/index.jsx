@@ -15,11 +15,11 @@ function ContactSection() {
   return (
     <div id="contact" className="my-16 lg:my-28 relative">
       <div className="flex items-center gap-3 mb-10">
-        <div className="p-2 rounded-xl bg-violet-500/10 border border-violet-500/20 text-violet-400">
+        <div className="p-2 rounded-xl bg-violet-500/10 border border-violet-500/20 text-violet-600 dark:text-violet-400">
           <HiEnvelope size={22} />
         </div>
-        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white">
-          Get In <span className="bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent">Touch</span>
+        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-900 dark:text-white">
+          Get In <span className="bg-gradient-to-r from-violet-600 to-pink-500 dark:from-violet-400 dark:to-pink-400 bg-clip-text text-transparent">Touch</span>
         </h2>
         <div className="h-[1px] flex-1 bg-gradient-to-r from-violet-500/30 to-transparent ml-4" />
       </div>
@@ -30,47 +30,47 @@ function ContactSection() {
         </div>
 
         <div className="lg:col-span-5 flex flex-col justify-between">
-          <SpotlightCard className="p-6 sm:p-8 h-full flex flex-col justify-between">
+          <SpotlightCard className="p-6 sm:p-8 h-full flex flex-col justify-between border-neutral-200 dark:border-white/10 bg-white dark:bg-neutral-950/80">
             <div>
-              <h3 className="text-xl font-bold text-white mb-2">Let&apos;s talk about your project</h3>
-              <p className="text-sm text-neutral-400 mb-8">
+              <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-2">Let&apos;s talk about your project</h3>
+              <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-8">
                 Feel free to reach out for collaborations, new opportunities, or just a friendly chat.
               </p>
 
               <div className="flex flex-col gap-6">
                 <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-xl bg-violet-500/10 border border-violet-500/20 text-violet-400 shrink-0">
+                  <div className="p-3 rounded-xl bg-violet-500/10 border border-violet-500/20 text-violet-600 dark:text-violet-400 shrink-0">
                     <MdAlternateEmail size={20} />
                   </div>
                   <div>
-                    <p className="text-xs text-neutral-400">Email</p>
-                    <p className="text-sm font-semibold text-white mt-0.5">{personalData.email}</p>
+                    <p className="text-xs text-neutral-500 dark:text-neutral-400">Email</p>
+                    <p className="text-sm font-semibold text-neutral-900 dark:text-white mt-0.5">{personalData.email}</p>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-xl bg-violet-500/10 border border-violet-500/20 text-violet-400 shrink-0">
+                  <div className="p-3 rounded-xl bg-violet-500/10 border border-violet-500/20 text-violet-600 dark:text-violet-400 shrink-0">
                     <IoMdCall size={20} />
                   </div>
                   <div>
-                    <p className="text-xs text-neutral-400">Phone</p>
-                    <p className="text-sm font-semibold text-white mt-0.5">{personalData.phone}</p>
+                    <p className="text-xs text-neutral-500 dark:text-neutral-400">Phone</p>
+                    <p className="text-sm font-semibold text-neutral-900 dark:text-white mt-0.5">{personalData.phone}</p>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-xl bg-violet-500/10 border border-violet-500/20 text-violet-400 shrink-0">
+                  <div className="p-3 rounded-xl bg-violet-500/10 border border-violet-500/20 text-violet-600 dark:text-violet-400 shrink-0">
                     <CiLocationOn size={20} />
                   </div>
                   <div>
-                    <p className="text-xs text-neutral-400">Location</p>
-                    <p className="text-sm font-semibold text-white mt-0.5">{personalData.address}</p>
+                    <p className="text-xs text-neutral-500 dark:text-neutral-400">Location</p>
+                    <p className="text-sm font-semibold text-neutral-900 dark:text-white mt-0.5">{personalData.address}</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="mt-8 pt-6 border-t border-white/10 flex items-center gap-3">
+            <div className="mt-8 pt-6 border-t border-neutral-200 dark:border-white/10 flex items-center gap-3">
               {[
                 { href: personalData.github, icon: IoLogoGithub },
                 { href: personalData.linkedIn, icon: BiLogoLinkedin },
@@ -84,7 +84,7 @@ function ContactSection() {
                     key={idx}
                     target="_blank"
                     href={item.href}
-                    className="p-2.5 rounded-xl bg-white/5 border border-white/10 text-neutral-300 hover:text-white hover:bg-violet-500/20 hover:border-violet-500/30 transition-all duration-300"
+                    className="p-2.5 rounded-xl bg-neutral-100 dark:bg-white/5 border border-neutral-200 dark:border-white/10 text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white hover:bg-violet-500/20 hover:border-violet-500/30 transition-all duration-300"
                   >
                     <Icon size={18} />
                   </Link>

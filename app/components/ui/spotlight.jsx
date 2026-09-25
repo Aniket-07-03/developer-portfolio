@@ -47,7 +47,7 @@ export const SpotlightCard = ({
       onBlur={handleBlur}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`relative rounded-2xl border bg-neutral-950/80 backdrop-blur-xl overflow-hidden transition-colors duration-300 ${className}`}
+      className={`relative rounded-2xl border bg-white/80 dark:bg-neutral-950/80 backdrop-blur-xl overflow-hidden transition-colors duration-300 ${className}`}
       style={{
         borderColor: opacity > 0 ? hoverBorderColor : borderColor,
       }}
@@ -67,7 +67,7 @@ export const SpotlightCard = ({
 export const GridBackground = () => {
   return (
     <div className="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f293715_1px,transparent_1px),linear-gradient(to_bottom,#1f293715_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f293715_1px,transparent_1px),linear-gradient(to_bottom,#1f293715_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] dark:[mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-tr from-violet-600/15 via-pink-500/10 to-blue-500/10 blur-[120px] rounded-full" />
     </div>
   );
@@ -75,8 +75,8 @@ export const GridBackground = () => {
 
 export const GlowingBadge = ({ children, icon: Icon, className = "" }) => {
   return (
-    <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-violet-500/30 bg-violet-500/10 text-xs font-medium text-violet-300 shadow-[0_0_15px_rgba(139,92,246,0.2)] backdrop-blur-md ${className}`}>
-      {Icon && <Icon className="w-3.5 h-3.5 text-violet-400 animate-pulse" />}
+    <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-violet-500/30 bg-violet-500/10 text-xs font-medium text-violet-600 dark:text-violet-300 shadow-[0_0_15px_rgba(139,92,246,0.1)] dark:shadow-[0_0_15px_rgba(139,92,246,0.2)] backdrop-blur-md ${className}`}>
+      {Icon && <Icon className="w-3.5 h-3.5 text-violet-600 dark:text-violet-400 animate-pulse" />}
       <span>{children}</span>
     </div>
   );
