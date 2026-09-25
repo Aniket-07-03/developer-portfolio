@@ -7,26 +7,26 @@ import { FaCode, FaExternalLinkAlt } from 'react-icons/fa';
 
 function ProjectCard({ project }) {
   return (
-    <SpotlightCard className="w-full p-6 sm:p-8 border-white/10 hover:border-violet-500/40">
+    <SpotlightCard className="w-full p-6 sm:p-8 border-neutral-200 dark:border-white/10 hover:border-violet-500/40">
       <div className="flex flex-col gap-4">
         {/* Header */}
-        <div className="flex items-center justify-between border-b border-white/10 pb-4">
+        <div className="flex items-center justify-between border-b border-neutral-200 dark:border-white/10 pb-4">
           <div className="flex items-center gap-2">
             <span className="h-3 w-3 rounded-full bg-red-500/80" />
             <span className="h-3 w-3 rounded-full bg-amber-500/80" />
             <span className="h-3 w-3 rounded-full bg-emerald-500/80" />
           </div>
-          <span className="text-xs font-mono text-violet-400 bg-violet-500/10 border border-violet-500/20 px-3 py-1 rounded-full">
+          <span className="text-xs font-mono text-violet-600 dark:text-violet-400 bg-violet-500/10 border border-violet-500/20 px-3 py-1 rounded-full">
             {project.role}
           </span>
         </div>
 
         {/* Title & Description */}
         <div>
-          <h3 className="text-xl sm:text-2xl font-bold text-white tracking-wide">
+          <h3 className="text-xl sm:text-2xl font-bold text-neutral-900 dark:text-white tracking-wide">
             {project.name}
           </h3>
-          <p className="mt-3 text-sm sm:text-base text-neutral-300 leading-relaxed">
+          <p className="mt-3 text-sm sm:text-base text-neutral-600 dark:text-neutral-300 leading-relaxed">
             {project.description}
           </p>
         </div>
@@ -36,7 +36,7 @@ function ProjectCard({ project }) {
           {project.tools?.map((tool, index) => (
             <span
               key={index}
-              className="px-3 py-1 text-xs font-medium rounded-md bg-white/5 border border-white/10 text-cyan-300 hover:border-cyan-500/40 transition-colors"
+              className="px-3 py-1 text-xs font-medium rounded-md bg-neutral-100 dark:bg-white/5 border border-neutral-200 dark:border-white/10 text-cyan-700 dark:text-cyan-300 hover:border-cyan-500/40 transition-colors"
             >
               {tool}
             </span>
@@ -45,14 +45,14 @@ function ProjectCard({ project }) {
 
         {/* Links */}
         {(project.code || project.demo) && (
-          <div className="mt-4 flex items-center gap-4 pt-4 border-t border-white/10">
+          <div className="mt-4 flex items-center gap-4 pt-4 border-t border-neutral-200 dark:border-white/10">
             {project.code && (
               <Link
                 href={project.code}
                 target="_blank"
-                className="inline-flex items-center gap-2 text-xs font-semibold text-neutral-300 hover:text-white transition-colors"
+                className="inline-flex items-center gap-2 text-xs font-semibold text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:text-white transition-colors"
               >
-                <FaCode size={14} className="text-violet-400" />
+                <FaCode size={14} className="text-violet-600 dark:text-violet-400" />
                 <span>Code</span>
               </Link>
             )}
@@ -60,7 +60,7 @@ function ProjectCard({ project }) {
               <Link
                 href={project.demo}
                 target="_blank"
-                className="inline-flex items-center gap-2 text-xs font-semibold text-neutral-300 hover:text-white transition-colors"
+                className="inline-flex items-center gap-2 text-xs font-semibold text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:text-white transition-colors"
               >
                 <FaExternalLinkAlt size={12} className="text-pink-400" />
                 <span>Live Demo</span>
