@@ -11,6 +11,7 @@ import { RiContactsFill } from "react-icons/ri";
 import { SiLeetcode } from "react-icons/si";
 import { HiSparkles } from "react-icons/hi2";
 import { SpotlightCard, GlowingBadge } from "@/app/components/ui/spotlight";
+import { MagicText } from "@/app/components/ui/magic-text";
 
 function HeroSection() {
   return (
@@ -21,16 +22,14 @@ function HeroSection() {
             Available for New Projects & Roles
           </GlowingBadge>
 
-          <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl lg:leading-[1.15]">
+          <h1 className="text-4xl font-extrabold tracking-tight text-neutral-900 dark:text-white sm:text-5xl lg:text-6xl lg:leading-[1.15]">
             Hi, I&apos;m{" "}
-            <span className="bg-gradient-to-r from-violet-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
-              {personalData.name}
-            </span>
+            <MagicText text={personalData.name} />
           </h1>
 
-          <p className="mt-4 text-xl font-medium text-neutral-300">
+          <p className="mt-4 text-xl font-medium text-neutral-600 dark:text-neutral-300">
             A passionate{" "}
-            <span className="text-cyan-400 underline decoration-cyan-500/30 underline-offset-4">
+            <span className="text-cyan-600 dark:text-cyan-400 underline decoration-cyan-500/30 underline-offset-4">
               {personalData.designation}
             </span>{" "}
             building high-performance web applications and sleek digital experiences.
@@ -52,7 +51,7 @@ function HeroSection() {
                   href={social.href}
                   target="_blank"
                   aria-label={social.label}
-                  className="p-3 rounded-xl border border-white/10 bg-white/5 text-neutral-300 hover:text-white hover:border-violet-500/50 hover:bg-violet-500/10 hover:shadow-[0_0_20px_rgba(139,92,246,0.3)] transition-all duration-300 transform hover:-translate-y-1"
+                  className="p-3 rounded-xl border border-neutral-200 dark:border-white/10 bg-neutral-100 dark:bg-white/5 text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:text-white hover:border-violet-500/50 hover:bg-violet-500/10 hover:shadow-[0_0_20px_rgba(139,92,246,0.3)] transition-all duration-300 transform hover:-translate-y-1"
                 >
                   <Icon size={20} />
                 </Link>
@@ -67,19 +66,19 @@ function HeroSection() {
               className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full p-[1px] font-medium text-sm"
             >
               <span className="absolute inset-0 bg-gradient-to-r from-violet-600 to-pink-500 transition-all duration-300 group-hover:opacity-100" />
-              <span className="relative flex items-center gap-2 rounded-full bg-black/90 px-6 py-3.5 text-white transition-all duration-300 group-hover:bg-black/60">
+              <span className="relative flex items-center gap-2 rounded-full bg-neutral-900 dark:bg-black/90 px-6 py-3.5 text-white transition-all duration-300 group-hover:bg-neutral-800 dark:group-hover:bg-black/60">
                 <span>Contact Me</span>
-                <RiContactsFill size={16} className="text-pink-400 group-hover:translate-x-0.5 transition-transform" />
+                <RiContactsFill size={16} className="text-pink-600 dark:text-pink-400 group-hover:translate-x-0.5 transition-transform" />
               </span>
             </Link>
 
             <Link
               href={personalData.resume}
               target="_blank"
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-medium text-white backdrop-blur-md transition-all duration-300 hover:border-violet-500/50 hover:bg-white/10 hover:shadow-[0_0_20px_rgba(139,92,246,0.2)]"
+              className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-neutral-100 dark:bg-white/5 px-6 py-3.5 text-sm font-medium text-neutral-900 dark:text-white backdrop-blur-md transition-all duration-300 hover:border-violet-500/50 hover:bg-white/10 hover:shadow-[0_0_20px_rgba(139,92,246,0.2)]"
             >
               <span>Get Resume</span>
-              <MdDownload size={18} className="text-violet-400" />
+              <MdDownload size={18} className="text-violet-600 dark:text-violet-400" />
             </Link>
           </div>
         </div>
@@ -87,54 +86,54 @@ function HeroSection() {
         {/* Dynamic Code Showcase Terminal */}
         <div className="order-1 lg:order-2">
           <SpotlightCard className="p-1 sm:p-2 border-violet-500/20 shadow-[0_0_50px_rgba(139,92,246,0.15)]">
-            <div className="flex items-center justify-between border-b border-white/10 px-4 py-3 bg-white/5">
+            <div className="flex items-center justify-between border-b border-neutral-200 dark:border-white/10 px-4 py-3 bg-neutral-100 dark:bg-white/5">
               <div className="flex items-center space-x-2">
                 <div className="h-3 w-3 rounded-full bg-red-500/80"></div>
                 <div className="h-3 w-3 rounded-full bg-amber-500/80"></div>
                 <div className="h-3 w-3 rounded-full bg-emerald-500/80"></div>
               </div>
-              <span className="text-xs font-mono text-neutral-400">developer.ts</span>
+              <span className="text-xs font-mono text-neutral-500 dark:text-neutral-400">developer.ts</span>
             </div>
 
-            <div className="p-4 sm:p-6 overflow-x-auto font-mono text-xs sm:text-sm leading-relaxed text-neutral-300">
+            <div className="p-4 sm:p-6 overflow-x-auto font-mono text-xs sm:text-sm leading-relaxed text-neutral-600 dark:text-neutral-300">
               <div>
-                <span className="text-pink-400">const</span>{" "}
-                <span className="text-violet-300">developer</span>{" "}
-                <span className="text-pink-400">=</span>{" "}
-                <span className="text-neutral-400">{"{"}</span>
+                <span className="text-pink-600 dark:text-pink-400">const</span>{" "}
+                <span className="text-violet-600 dark:text-violet-300">developer</span>{" "}
+                <span className="text-pink-600 dark:text-pink-400">=</span>{" "}
+                <span className="text-neutral-500 dark:text-neutral-400">{"{"}</span>
               </div>
               <div className="pl-4 sm:pl-6">
-                <span className="text-neutral-200">name:</span>{" "}
-                <span className="text-amber-300">&apos;ANIKET MHALUNGEKAR&apos;</span>,
+                <span className="text-neutral-700 dark:text-neutral-200">name:</span>{" "}
+                <span className="text-amber-600 dark:text-amber-300">&apos;ANIKET MHALUNGEKAR&apos;</span>,
               </div>
               <div className="pl-4 sm:pl-6">
-                <span className="text-neutral-200">role:</span>{" "}
-                <span className="text-amber-300">&apos;Full Stack Developer&apos;</span>,
+                <span className="text-neutral-700 dark:text-neutral-200">role:</span>{" "}
+                <span className="text-amber-600 dark:text-amber-300">&apos;Full Stack Developer&apos;</span>,
               </div>
               <div className="pl-4 sm:pl-6">
-                <span className="text-neutral-200">skills:</span>{" "}
-                <span className="text-neutral-400">[</span>
+                <span className="text-neutral-700 dark:text-neutral-200">skills:</span>{" "}
+                <span className="text-neutral-500 dark:text-neutral-400">[</span>
               </div>
-              <div className="pl-8 sm:pl-12 text-amber-300">
+              <div className="pl-8 sm:pl-12 text-amber-600 dark:text-amber-300">
                 &apos;React&apos;, &apos;Next.js&apos;, &apos;TypeScript&apos;, &apos;Node.js&apos;, &apos;TailwindCSS&apos;, &apos;Docker&apos;
               </div>
-              <div className="pl-4 sm:pl-6 text-neutral-400">],</div>
+              <div className="pl-4 sm:pl-6 text-neutral-500 dark:text-neutral-400">],</div>
               <div className="pl-4 sm:pl-6">
-                <span className="text-neutral-200">hardWorker:</span>{" "}
-                <span className="text-emerald-400">true</span>,
+                <span className="text-neutral-700 dark:text-neutral-200">hardWorker:</span>{" "}
+                <span className="text-emerald-600 dark:text-emerald-400">true</span>,
               </div>
               <div className="pl-4 sm:pl-6">
-                <span className="text-neutral-200">problemSolver:</span>{" "}
-                <span className="text-emerald-400">true</span>,
+                <span className="text-neutral-700 dark:text-neutral-200">problemSolver:</span>{" "}
+                <span className="text-emerald-600 dark:text-emerald-400">true</span>,
               </div>
               <div className="pl-4 sm:pl-6">
-                <span className="text-emerald-400">hireable:</span>{" "}
-                <span className="text-pink-400">function</span>() {"{"}
+                <span className="text-emerald-600 dark:text-emerald-400">hireable:</span>{" "}
+                <span className="text-pink-600 dark:text-pink-400">function</span>() {"{"}
               </div>
               <div className="pl-8 sm:pl-12">
-                <span className="text-pink-400">return</span>{" "}
-                <span className="text-cyan-400">this</span>.hardWorker &amp;&amp;{" "}
-                <span className="text-cyan-400">this</span>.problemSolver;
+                <span className="text-pink-600 dark:text-pink-400">return</span>{" "}
+                <span className="text-cyan-600 dark:text-cyan-400">this</span>.hardWorker &amp;&amp;{" "}
+                <span className="text-cyan-600 dark:text-cyan-400">this</span>.problemSolver;
               </div>
               <div className="pl-4 sm:pl-6">{"}"}</div>
               <div>{"};"}</div>

@@ -66,17 +66,17 @@ function ContactForm() {
   };
 
   return (
-    <SpotlightCard className="p-6 sm:p-8 border-white/10">
-      <h3 className="text-xl font-bold text-white mb-2">Send a Message</h3>
-      <p className="text-sm text-neutral-400 mb-6">
+    <SpotlightCard className="p-6 sm:p-8 border-neutral-200 dark:border-white/10">
+      <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-2">Send a Message</h3>
+      <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-6">
         Fill out the form below and I&apos;ll get back to you as soon as possible.
       </p>
 
       <form onSubmit={handleSendMail} className="flex flex-col gap-4">
         <div className="flex flex-col gap-2">
-          <label className="text-xs font-semibold text-neutral-300 uppercase tracking-wider">Your Name</label>
+          <label className="text-xs font-semibold text-neutral-600 dark:text-neutral-300 uppercase tracking-wider">Your Name</label>
           <input
-            className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-sm text-white placeholder-neutral-500 focus:border-violet-500/80 focus:bg-white/10 focus:outline-none transition-all duration-300"
+            className="w-full rounded-xl bg-neutral-100 dark:bg-white/5 border border-neutral-200 dark:border-white/10 px-4 py-3 text-sm text-neutral-900 dark:text-white placeholder-neutral-500 focus:border-violet-500/80 focus:bg-white/10 focus:outline-none transition-all duration-300"
             type="text"
             placeholder="John Doe"
             maxLength="100"
@@ -88,9 +88,9 @@ function ContactForm() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label className="text-xs font-semibold text-neutral-300 uppercase tracking-wider">Your Email</label>
+          <label className="text-xs font-semibold text-neutral-600 dark:text-neutral-300 uppercase tracking-wider">Your Email</label>
           <input
-            className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-sm text-white placeholder-neutral-500 focus:border-violet-500/80 focus:bg-white/10 focus:outline-none transition-all duration-300"
+            className="w-full rounded-xl bg-neutral-100 dark:bg-white/5 border border-neutral-200 dark:border-white/10 px-4 py-3 text-sm text-neutral-900 dark:text-white placeholder-neutral-500 focus:border-violet-500/80 focus:bg-white/10 focus:outline-none transition-all duration-300"
             type="email"
             placeholder="john@example.com"
             maxLength="100"
@@ -106,9 +106,9 @@ function ContactForm() {
         </div>
 
         <div className="flex flex-col gap-2">
-          <label className="text-xs font-semibold text-neutral-300 uppercase tracking-wider">Your Message</label>
+          <label className="text-xs font-semibold text-neutral-600 dark:text-neutral-300 uppercase tracking-wider">Your Message</label>
           <textarea
-            className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-sm text-white placeholder-neutral-500 focus:border-violet-500/80 focus:bg-white/10 focus:outline-none transition-all duration-300"
+            className="w-full rounded-xl bg-neutral-100 dark:bg-white/5 border border-neutral-200 dark:border-white/10 px-4 py-3 text-sm text-neutral-900 dark:text-white placeholder-neutral-500 focus:border-violet-500/80 focus:bg-white/10 focus:outline-none transition-all duration-300"
             placeholder="Hello, I'd like to talk about..."
             maxLength="500"
             name="message"
@@ -128,7 +128,7 @@ function ContactForm() {
           className="mt-2 group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-xl p-[1px] font-semibold text-sm focus:outline-none"
         >
           <span className="absolute inset-0 bg-gradient-to-r from-violet-600 to-pink-500 transition-all duration-300 group-hover:opacity-100" />
-          <span className="relative flex items-center justify-center gap-2 w-full rounded-xl bg-black/90 px-6 py-3.5 text-white transition-all duration-300 group-hover:bg-black/60">
+          <span className="relative flex items-center justify-center gap-2 w-full rounded-xl bg-neutral-900 dark:bg-black/90 px-6 py-3.5 text-white transition-all duration-300 group-hover:bg-neutral-800 dark:group-hover:bg-black/60">
             {isLoading ? (
               <span>Sending Message...</span>
             ) : (
